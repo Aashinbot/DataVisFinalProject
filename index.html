@@ -1,38 +1,153 @@
-<!DOCTYPE html>​
-<html lang=“en”>​
-<head>​
-  <meta charset=“UTF-8”>​
-  <title>Hello World!</title>​
-  <style>
-    .image {
-        width: 300px;
-        height: 400px;
-    }
-  </style>
-</head>​
-<body>​
-  <h1>Hello World!</h1>​
-  <!-- <img class = "image"src="data/World.jpeg" /> -->
-  
-  <svg width="500" height="300">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>London Boroughs Grid Cartogram</title>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .borough {
+            /* fill: yellow; Default uniform color */
+            stroke: #ffffff;
+            stroke-width: 2;
+            cursor: pointer;
+        }
+        .borough:hover {
+            opacity: 0.8;
+        }
+        .label {
+            font-size: 14px;
+            fill: white;
+            font-weight: bold;
+            text-anchor: middle;
+            dominant-baseline: middle;
+        }
+        .tooltip {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 6px;
+            border-radius: 4px;
+            font-size: 14px;
+            display: none;
+            pointer-events: none;
+        }
+        .legend-item {
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h2>London Boroughs Grid Cartogram </h2>
+<div id="tooltip" class="tooltip"></div>
+<svg id="cartogram"></svg>
+<script src="linegraph.js"></script>
+<script>
+    // Boroughs with correct approximate positions for alignment
+    const boroughs = [
+        { abbr: "Enf", x: 4, y: 0 }, { abbr: "Brn", x: 3, y: 1 }, { abbr: "Hrw", x: 2, y: 1 },
+        { abbr: "Hgy", x: 4, y: 1 }, { abbr: "Wth", x: 5, y: 1 }, { abbr: "Hdn", x: 0, y: 2 },
+        { abbr: "Rdb", x: 1, y: 2 },{ abbr: "Rdb", x: 6, y: 2 },
+        { abbr: "Brt", x: 2, y: 2 }, { abbr: "Cmd", x: 3, y: 2 }, { abbr: "Isl", x: 4, y: 2 },
+        { abbr: "Hck", x: 5, y: 2 }, { abbr: "Hvg", x: 7, y: 2 },
+        { abbr: "Wst", x: 3, y: 3 }, { abbr: "Cty", x: 4, y: 3 }, { abbr: "Tow", x: 5, y: 3 },
+        { abbr: "Nwm", x: 6, y: 3 },{ abbr: "Bar", x: 7, y: 3 },
+        { abbr: "Hns", x: 0, y: 3 }, { abbr: "Hms", x: 1, y: 3 }, { abbr: "Kns", x: 2, y: 3 },
+        { abbr: "Lam", x: 3, y: 4 }, { abbr: "Swr", x: 4, y: 4 }, { abbr: "Lsh", x: 5, y: 4 },
+        { abbr: "Grn", x: 6, y: 4 },
+        { abbr: "Rch", x: 1, y: 4 }, { abbr: "Wns", x: 2, y: 4 }, { abbr: "Mrt", x: 3, y: 5 },
+        { abbr: "Crd", x: 4, y: 5 }, { abbr: "Brm", x: 5, y: 5 }, { abbr: "Bxl", x: 7, y: 4 },
+        { abbr: "Kng", x: 2, y: 5 },
+        { abbr: "Stn", x: 3, y: 6 }
+    ];
+
+    const crimeTypes = ["Violent Crime", "Burglary", "Theft"];
+    const months = Array.from({ length: 120 }, (_, i) => d3.timeMonth.offset(new Date(2014, 0), i));
+
+    boroughs.forEach(borough => {
+    borough.crimes = {};
+    crimeTypes.forEach(crime => {
+        borough.crimes[crime] = months.map(() => Math.floor(Math.random() * 100)); // Random values 0-100
+    });
+});
+
+    const gridSize = 80; // Borough square size
+    const width = 8 * gridSize;
+    const height = 7 * gridSize;
+
+    // Create color scale for crime rate
+    const colorScales = {
+        "Violent Crime": d3.scaleSequential(d3.interpolateReds).domain([0, 100]),
+        "Burglary": d3.scaleSequential(d3.interpolateBlues).domain([0, 100]),
+        "Theft": d3.scaleSequential(d3.interpolateGreens).domain([0, 100])
+    };
+
+    let selectedCrime = "Violent Crime";
+    // Create SVG container
+    const svg = d3.select("#cartogram")
+        .attr("width", width)
+        .attr("height", height + 80);
     
-    <!-- Rectangle on top -->
+        function updateMap(crimeType) {
+    selectedCrime = crimeType; // Update selected crime type
+
+    svg.selectAll(".borough")
+        .transition().duration(500)
+        .attr("fill", d => {
+            const avgCrime = d3.mean(d.crimes[selectedCrime]); // Compute 10-year average
+            return colorScales[selectedCrime](avgCrime);
+        });
+}
+
     
-    <ellipse cx="200" cy="100" rx="100" ry="50"
-             style="fill:lightpink"/>
-    <circle cx="100" cy="100" r="50" 
-             style="fill:purple; stroke:lavender; opacity: 0.5;" />
-    <rect x="250" y="50" width="100" height="100"
-          style="fill:orangered; opacity: 0.4;"/>
-   
-    <!-- Ellipse on top -->
-    <!-- <rect x="50" y="160" width="200" height="100"
-          style="fill:orangered;"/>
-    <ellipse cx="200" cy="210" rx="100" ry="50"
-             style="fill:steelblue;"/> -->
-</svg>
+    // Tooltip setup
+    const tooltip = d3.select("#tooltip");
+
+    // Draw borough rectangles with color encoding
+    svg.selectAll(".borough")
+    .data(boroughs)
+    .enter().append("rect")
+    .attr("class", "borough")
+    .attr("x", d => d.x * gridSize)
+    .attr("y", d => d.y * gridSize)
+    .attr("width", gridSize - 3)
+    .attr("height", gridSize - 3)
+    .attr("fill", d => {
+        const avgCrime = d3.mean(d.crimes[selectedCrime]); // Compute 10-year average
+        return colorScales[selectedCrime](avgCrime);
+    })
+    .on("click", (event, d) => showLineGraph(d, selectedCrime));
 
 
+    // Add labels to boroughs
+    svg.selectAll(".label")
+        .data(boroughs)
+        .enter().append("text")
+        .attr("class", "label")
+        .attr("x", d => d.x * gridSize + (gridSize / 2))
+        .attr("y", d => d.y * gridSize + (gridSize / 2))
+        .text(d => d.abbr);
 
-</body>​
+   const legendItems = svg.append("g")
+        .attr("transform", `translate(${width / ((width / crimeTypes.length))}, ${height + 50})`);
+
+    legendItems.selectAll(".legend-item")
+        .data(crimeTypes)
+        .enter().append("text")
+        .attr("class", "legend-item")
+        .attr("x", (d, i) => i * (width / crimeTypes.length))
+        .attr("y", 20)
+        .text(d => d)
+        .style("fill", (d, i) => ["red", "blue", "green"][i])
+        .on("click", (event, d) => updateMap(d));
+</script>
+
+</body>
 </html>
