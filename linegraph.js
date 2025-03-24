@@ -1,4 +1,4 @@
-function showLineGraph(borough, crimeType) {
+ function showLineGraph(borough, crimeType) {
     // Remove any existing chart
     d3.select("#chart-container").remove();
 
