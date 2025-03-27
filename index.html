@@ -45,72 +45,89 @@
 </head>
 <body>
 
-<h2>London Boroughs Grid  </h2>
+<h2>London Boroughs Grid</h2>
 <div id="tooltip" class="tooltip"></div>
 <svg id="cartogram"></svg>
 <script src="linegraph.js"></script>
+<Script src="convertboroughToJson.js"></Script>
+<Script src="mergeCrimeData.js"></Script>
 <script>
+// Load the CSV file
+let nestedCrimeData20122020 = null;
+let nestedCrimeData20212025 = null;
+d3.csv("dataset/crimeDataAggregated2012-2020.csv").then(data => {
+    console.log("Loaded data:", data);
+
+    // Call the function to transform the data
+    nestedCrimeData20122020 = transformToNestedJSON(data);
+
+    console.log("Nested JSON Data:", nestedCrimeData20122020);
+}).catch(error => {
+    console.error("Error loading the CSV file:", error);
+});
+
+d3.csv("dataset/crimeDataAggregated2021-2025.csv").then(data => {
+    console.log("Loaded data:", data);
+
+    // Call the function to transform the data
+    nestedCrimeData20212025 = transformToNestedJSON(data);
+
+    console.log("Nested JSON Data2:", nestedCrimeData20212025);
+}).catch(error => {
+    console.error("Error loading the CSV file:", error);
+});
+
+
+
+
     // Boroughs with correct approximate positions for alignment
     const boroughs = [
-        { abbr: "Enf", x: 4, y: 0 }, { abbr: "Brn", x: 3, y: 1 }, { abbr: "Hrw", x: 2, y: 1 },
-        { abbr: "Hgy", x: 4, y: 1 }, { abbr: "Wth", x: 5, y: 1 }, { abbr: "Hdn", x: 0, y: 2 },
-        { abbr: "Rdb", x: 1, y: 2 },{ abbr: "Rdb", x: 6, y: 2 },
-        { abbr: "Brt", x: 2, y: 2 }, { abbr: "Cmd", x: 3, y: 2 }, { abbr: "Isl", x: 4, y: 2 },
-        { abbr: "Hck", x: 5, y: 2 }, { abbr: "Hvg", x: 7, y: 2 },
-        { abbr: "Wst", x: 3, y: 3 }, { abbr: "Cty", x: 4, y: 3 }, { abbr: "Tow", x: 5, y: 3 },
-        { abbr: "Nwm", x: 6, y: 3 },{ abbr: "Bar", x: 7, y: 3 },
-        { abbr: "Hns", x: 0, y: 3 }, { abbr: "Hms", x: 1, y: 3 }, { abbr: "Kns", x: 2, y: 3 },
-        { abbr: "Lam", x: 3, y: 4 }, { abbr: "Swr", x: 4, y: 4 }, { abbr: "Lsh", x: 5, y: 4 },
-        { abbr: "Grn", x: 6, y: 4 },
-        { abbr: "Rch", x: 1, y: 4 }, { abbr: "Wns", x: 2, y: 4 }, { abbr: "Mrt", x: 3, y: 5 },
-        { abbr: "Crd", x: 4, y: 5 }, { abbr: "Brm", x: 5, y: 5 }, { abbr: "Bxl", x: 7, y: 4 },
-        { abbr: "Kng", x: 2, y: 5 },
-        { abbr: "Stn", x: 3, y: 6 }
-    ];
+    { abbr: "Enf", name: "Enfield", x: 4, y: 0 },
+    { abbr: "Brn", name: "Barnet", x: 3, y: 1 },
+    { abbr: "Hrw", name: "Harrow", x: 2, y: 1 },
+    { abbr: "Hgy", name: "Haringey", x: 4, y: 1 },
+    { abbr: "Wth", name: "Waltham Forest", x: 5, y: 1 },
+    { abbr: "Hdn", name: "Hillingdon", x: 0, y: 2 },
+    { abbr: "Rdb", name: "Redbridge", x: 1, y: 2 },
+    { abbr: "Rdb", name: "Redbridge", x: 6, y: 2 },
+    { abbr: "Brt", name: "Brent", x: 2, y: 2 },
+    { abbr: "Cmd", name: "Camden", x: 3, y: 2 },
+    { abbr: "Isl", name: "Islington", x: 4, y: 2 },
+    { abbr: "Hck", name: "Hackney", x: 5, y: 2 },
+    { abbr: "Hvg", name: "Havering", x: 7, y: 2 },
+    { abbr: "Wst", name: "Westminster", x: 3, y: 3 },
+    { abbr: "Cty", name: "City of London", x: 4, y: 3 },
+    { abbr: "Tow", name: "Tower Hamlets", x: 5, y: 3 },
+    { abbr: "Nwm", name: "Newham", x: 6, y: 3 },
+    { abbr: "Bar", name: "Barking and Dagenham", x: 7, y: 3 },
+    { abbr: "Hns", name: "Hounslow", x: 0, y: 3 },
+    { abbr: "Hms", name: "Hammersmith and Fulham", x: 1, y: 3 },
+    { abbr: "Kns", name: "Kensington and Chelsea", x: 2, y: 3 },
+    { abbr: "Lam", name: "Lambeth", x: 3, y: 4 },
+    { abbr: "Swr", name: "Southwark", x: 4, y: 4 },
+    { abbr: "Lsh", name: "Lewisham", x: 5, y: 4 },
+    { abbr: "Grn", name: "Greenwich", x: 6, y: 4 },
+    { abbr: "Rch", name: "Richmond upon Thames", x: 1, y: 4 },
+    { abbr: "Wns", name: "Wandsworth", x: 2, y: 4 },
+    { abbr: "Mrt", name: "Merton", x: 3, y: 5 },
+    { abbr: "Crd", name: "Croydon", x: 4, y: 5 },
+    { abbr: "Brm", name: "Bromley", x: 5, y: 5 },
+    { abbr: "Bxl", name: "Bexley", x: 7, y: 4 },
+    { abbr: "Kng", name: "Kingston upon Thames", x: 2, y: 5 },
+    { abbr: "Stn", name: "Sutton", x: 3, y: 6 }
+];
 
     const crimeTypes = ["Violent Crime", "Burglary", "Theft"];
     const months = Array.from({ length: 120 }, (_, i) => d3.timeMonth.offset(new Date(2014, 0), i));
 
-    boroughs.forEach(borough => {
-    borough.crimes = {};
-    crimeTypes.forEach(crime => {
-        borough.crimes[crime] = months.map(() => Math.floor(Math.random() * 100)); // Random values 0-100
-    });
-});
-
     const gridSize = 80; // Borough square size
     const width = 8 * gridSize;
     const height = 7 * gridSize;
-
-    // Create color scale for crime rate
-    const colorScales = {
-        "Violent Crime": d3.scaleSequential(d3.interpolateReds).domain([0, 100]),
-        "Burglary": d3.scaleSequential(d3.interpolateBlues).domain([0, 100]),
-        "Theft": d3.scaleSequential(d3.interpolateGreens).domain([0, 100])
-    };
-
-    let selectedCrime = "Violent Crime";
     // Create SVG container
     const svg = d3.select("#cartogram")
         .attr("width", width)
         .attr("height", height + 80);
     
-        function updateMap(crimeType) {
-    selectedCrime = crimeType; // Update selected crime type
-
-    svg.selectAll(".borough")
-        .transition().duration(500)
-        .attr("fill", d => {
-            const avgCrime = d3.mean(d.crimes[selectedCrime]); // Compute 10-year average
-            return colorScales[selectedCrime](avgCrime);
-        });
-}
-
-    
-    // Tooltip setup
-    const tooltip = d3.select("#tooltip");
-
-    // Draw borough rectangles with color encoding
     svg.selectAll(".borough")
     .data(boroughs)
     .enter().append("rect")
@@ -119,12 +136,12 @@
     .attr("y", d => d.y * gridSize)
     .attr("width", gridSize - 3)
     .attr("height", gridSize - 3)
-    .attr("fill", d => {
-        const avgCrime = d3.mean(d.crimes[selectedCrime]); // Compute 10-year average
-        return colorScales[selectedCrime](avgCrime);
-    })
-    .on("click", (event, d) => showLineGraph(d, selectedCrime));
-
+    .attr("fill", d => d3.interpolateBlues(0.5))
+    .on("click", (event, d) => {
+    console.log(`You clicked on: ${d.name}`);
+    const mergedData = mergeCrimeData(d.name, nestedCrimeData20122020, nestedCrimeData20212025);
+    showLineGraph(d, mergedData);
+});
 
     // Add labels to boroughs
     svg.selectAll(".label")
@@ -135,19 +152,13 @@
         .attr("y", d => d.y * gridSize + (gridSize / 2))
         .text(d => d.abbr);
 
-   const legendItems = svg.append("g")
-        .attr("transform", `translate(${width / ((width / crimeTypes.length))}, ${height + 50})`);
-
-    legendItems.selectAll(".legend-item")
-        .data(crimeTypes)
-        .enter().append("text")
-        .attr("class", "legend-item")
-        .attr("x", (d, i) => i * (width / crimeTypes.length))
-        .attr("y", 20)
-        .text(d => d)
-        .style("fill", (d, i) => ["red", "blue", "green"][i])
-        .on("click", (event, d) => updateMap(d));
 </script>
-
+<div id="linegraph-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); z-index: 1000;">
+    <div style="position: relative; margin: 5% auto; padding: 20px; background: white; width: 80%; height: 80%; overflow: auto;">
+        <button id="close-modal" style="position: absolute; top: 10px; right: 10px; background: red; color: white; border: none; padding: 5px 10px; cursor: pointer;">Close</button>
+        <h2 id="modal-title" style="text-align: center;"></h2>
+        <div id="linegraph-container"></div>
+    </div>
+</div>
 </body>
 </html>

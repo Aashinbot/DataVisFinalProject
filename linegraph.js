@@ -1,4 +1,4 @@
- function showLineGraph(borough, crimeType) {
+function showLineGraph(borough, combinedData) {
     // Remove any existing chart
     d3.select("#chart-container").remove();
 
@@ -8,8 +8,8 @@
         .style("position", "absolute")
         .style("top", "50px")
         .style("left", "50px")
-        .style("width", "700px")
-        .style("height", "450px")
+        .style("width", "750px") // Increased width to accommodate the legend
+        .style("height", "700px")
         .style("background", "white")
         .style("border", "1px solid black")
         .style("padding", "10px")
@@ -17,104 +17,101 @@
         .style("z-index", "1000");
 
     chartContainer.append("h3")
-        .text(`${crimeType} Trends in ${borough.abbr}`)
+        .text(`Crime Trends in ${borough.name} (2012-2024)`) // Updated title to reflect the new range
         .style("text-align", "center");
 
     // Set up dimensions
-    const margin = { top: 40, right: 30, bottom: 50, left: 60 };
+    const margin = { top: 40, right: 150, bottom: 50, left: 60 }; // Increased right margin for the legend
     const width = 650 - margin.left - margin.right;
-    const height = 350 - margin.top - margin.bottom;
+    const height = 400 - margin.top - margin.bottom;
 
-    // Create SVG for the line chart
     const svg = chartContainer.append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`);
 
-    // Extract the crime data for the selected borough and crime type
-    const crimeData = borough.crimes[crimeType].map((value, index) => ({
-        date: months[index],
-        value: value
-    }));
+    // Extract crime types and years
+    const crimeTypes = Object.keys(combinedData);
+    const years = Array.from({ length: 13 }, (_, i) => 2012 + i); // Generate years from 2012 to 2024
 
-    // Define scales
-    const xScale = d3.scaleTime()
-        .domain(d3.extent(crimeData, d => d.date)) // Start and end of time range
+    // Set up scales
+    const xScale = d3.scaleLinear()
+        .domain([2012, 2024]) // Updated to exclude 2025
         .range([0, width]);
 
     const yScale = d3.scaleLinear()
-        .domain([0, d3.max(crimeData, d => d.value)]) // Scale to max crime value
+        .domain([0, d3.max(crimeTypes.flatMap(type => years.map(year => combinedData[type]?.[year] || 0)))])
         .range([height, 0]);
 
-    // Add X Axis
+    // Add axes
     svg.append("g")
         .attr("transform", `translate(0, ${height})`)
-        .call(d3.axisBottom(xScale).ticks(10).tickFormat(d3.timeFormat("%b %Y")))
-        .selectAll("text")
-        .style("text-anchor", "end")
-        .attr("transform", "rotate(-45)");
+        .call(d3.axisBottom(xScale).tickFormat(d3.format("d"))); // Format years as integers
 
-    // Add Y Axis
     svg.append("g").call(d3.axisLeft(yScale));
 
-    // Axis Labels
-    svg.append("text")
-        .attr("x", width / 2)
-        .attr("y", height + 40)
-        .style("text-anchor", "middle")
-        .text("Time (Months)");
+    const lines = {};
+    crimeTypes.forEach((crimeType, crimeIndex) => {
+        const crimeData = years.map(year => ({
+            year,
+            value: combinedData[crimeType]?.[year] || 0
+        }));
 
-    svg.append("text")
-        .attr("transform", "rotate(-90)")
-        .attr("y", -50)
-        .attr("x", -height / 2)
-        .style("text-anchor", "middle")
-        .text("Crime Rate");
+        const line = d3.line()
+            .x(d => xScale(d.year))
+            .y(d => yScale(d.value))
+            .curve(d3.curveMonotoneX); // Smooth the line
 
-    // Draw the line graph for the selected crime type
-    const line = d3.line()
-        .x(d => xScale(d.date))
-        .y(d => yScale(d.value))
-        .curve(d3.curveMonotoneX); // Smooth curve
+        lines[crimeType] = svg.append("path")
+            .datum(crimeData)
+            .attr("fill", "none")
+            .attr("stroke", d3.schemeCategory10[crimeIndex])
+            .attr("stroke-width", 2)
+            .attr("d", line)
+            .attr("class", `line-${crimeType}`);
+    });
 
-    svg.append("path")
-        .datum(crimeData)
-        .attr("fill", "none")
-        .attr("stroke", colorScales) //r intensity for stroke
-        .attr("stroke-width", 2.5)
-        .attr("d", line);
-
-    // Add circle markers for data points
-    svg.selectAll(".dot")
-        .data(crimeData)
-        .enter().append("circle")
-        .attr("cx", d => xScale(d.date))
-        .attr("cy", d => yScale(d.value))
-        .attr("r", 4)
-        .attr("fill", colorScales )
-        .on("mouseover", function (event, d) {
-         d3.select(this).attr("r", 6).attr("fill", "black");
-
-    tooltip.style("display", "block")
-        .html(`<strong>${d3.timeFormat("%b %Y")(d.date)}</strong>: ${d.value}`)
+    // Add legend outside the graph
+    const legend = chartContainer.append("div")
+        .attr("id", "legend-container")
         .style("position", "absolute")
-        .style("background", "#333")
-        .style("color", "#fff")
-        .style("padding", "6px")
-        .style("border-radius", "4px")
-        .style("left", `${event.pageX + 10}px`)
-        .style("top", `${event.pageY - 10}px`);
-      })
-      .on("mousemove", function (event) {
-        tooltip.style("left", `${event.pageX + 10}px`)
-        .style("top", `${event.pageY - 10}px`);
-})
-.on("mouseout", function () {
-    d3.select(this).attr("r", 4).attr("fill", colorScales[selectedCrime]); // Restore original color
-    tooltip.style("display", "none");
-});
+        .style("top", "60px")
+        .style("right", "20px")
+        .style("width", "120px");
 
+    let activeCrimeType = null; // Track the currently active crime type
+
+    crimeTypes.forEach((crimeType, crimeIndex) => {
+        const legendItem = legend.append("div")
+            .style("display", "flex")
+            .style("align-items", "center")
+            .style("margin-bottom", "5px")
+            .style("cursor", "pointer")
+            .on("click", () => {
+                if (activeCrimeType === crimeType) {
+                    // If the same crime type is clicked again, show all lines
+                    Object.values(lines).forEach(line => line.style("display", null));
+                    activeCrimeType = null;
+                } else {
+                    // Hide all lines except the selected one
+                    Object.entries(lines).forEach(([type, line]) => {
+                        line.style("display", type === crimeType ? null : "none");
+                    });
+                    activeCrimeType = crimeType;
+                }
+            });
+
+        legendItem.append("div")
+            .style("width", "20px")
+            .style("height", "20px")
+            .style("background-color", d3.schemeCategory10[crimeIndex])
+            .style("margin-right", "10px");
+
+        legendItem.append("span")
+            .text(crimeType)
+            .style("font-size", "14px");
+    });
 
     // Close button
     chartContainer.append("button")
