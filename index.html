@@ -262,11 +262,17 @@ const gridSize = 94; // Borough square size
     })
     .on("click", (event, d) => {
     console.log(`You clicked on: ${d.name}`);
+    if (d.name === "City of London") {
+        alert("The City of London is not a borough and does not have crime data.");
+        return;
+    }
+    else{
     const mergedData = mergeCrimeData(d.name, nestedCrimeData20122020, nestedCrimeData20212025);
     const greenPercentage = greenPercentageMap[d.name] || "N/A";
     console.log(greenPercentage);
     showLineGraph(d, mergedData, greenPercentage);
-    });
+    }
+});
 
     // Add labels to boroughs
     svg.selectAll(".label")
