@@ -44,8 +44,9 @@
     </style>
 </head>
 <body>
-
-<h2>London Boroughs Grid</h2>
+    
+    
+<h2>London Boroughs Cartogram map of Crime</h2>
 <div id="tooltip" class="tooltip"></div>
 <svg id="cartogram"></svg>
 <script src="linegraph.js"></script>
@@ -55,7 +56,36 @@
 // Load the CSV file
 let nestedCrimeData20122020 = null;
 let nestedCrimeData20212025 = null;
-d3.csv("dataset/crimeDataAggregated2012-2020.csv").then(data => {
+const averagePopulationMap = {};
+// Load the population CSV file
+d3.csv("dataset/population/population GLA estimate 2012-2025.csv").then(populationData => {
+    // Create a mapping of borough names to their average population
+    
+
+    populationData.forEach(row => {
+        const borough = row["Area Name"];
+        const years = Object.keys(row).filter(key => key !== "Area Name"); // Get all year columns
+        const totalPopulation = years.reduce((sum, year) => sum + parseFloat(row[year]), 0); // Sum all years
+        const averagePopulation = Math.ceil(totalPopulation / years.length); // Compute the average
+        averagePopulationMap[borough] = averagePopulation; // Store the result
+    });
+
+    console.log("Average Population Map:", averagePopulationMap);
+
+    // Example: Use the average population to scale borough sizes
+    const sizeScale = d3.scaleLinear()
+        .domain([d3.min(Object.values(averagePopulationMap)), d3.max(Object.values(averagePopulationMap))])
+        .range([40, 100]); // Minimum and maximum rectangle sizes
+
+    svg.selectAll(".borough")
+        .attr("width", d => sizeScale(averagePopulationMap[d.name]) - 3)
+        .attr("height", d => sizeScale(averagePopulationMap[d.name]) - 3)
+        .attr("x", d => d.x * gridSize + (gridSize - sizeScale(averagePopulationMap[d.name])) / 2)
+        .attr("y", d => d.y * gridSize + (gridSize - sizeScale(averagePopulationMap[d.name])) / 2);
+}).catch(error => {
+    console.error("Error loading the population CSV file:", error);
+});
+d3.csv("dataset/crime/crimeDataAggregated2012-2020.csv").then(data => {
     console.log("Loaded data:", data);
 
     // Call the function to transform the data
@@ -66,7 +96,7 @@ d3.csv("dataset/crimeDataAggregated2012-2020.csv").then(data => {
     console.error("Error loading the CSV file:", error);
 });
 
-d3.csv("dataset/crimeDataAggregated2021-2025.csv").then(data => {
+d3.csv("dataset/crime/crimeDataAggregated2021-2025.csv").then(data => {
     console.log("Loaded data:", data);
 
     // Call the function to transform the data
@@ -77,6 +107,87 @@ d3.csv("dataset/crimeDataAggregated2021-2025.csv").then(data => {
     console.error("Error loading the CSV file:", error);
 });
 
+const greenPercentageMap = {};
+d3.csv("dataset/Greenage/percent of borough green.csv").then(greenData => {
+        // Create a mapping of borough names to green percentages
+        
+        greenData.forEach(row => {
+            greenPercentageMap[row["City of London"]] = parseFloat(row["5.59"]);
+        });
+
+        // Create a color scale for the percentages
+        const colorScale = d3.scaleLinear()
+            .domain([0, 100]) // Percentages range from 0 to 100
+            .range(["#000000", "#5bff00"]); // Light blue to dark blue
+
+        // Update the borough colors based on the green percentage
+        svg.selectAll(".borough")
+            .attr("fill", d => {
+                const percentage = greenPercentageMap[d.name];
+                return percentage ? colorScale(percentage) : "#000000"; // Default to light blue if no data
+            });
+
+        // Add a legend for the color scale
+        const legendWidth = 300;
+        const legendHeight = 20;
+
+        const legendSvg = d3.select("body").append("svg")
+            .attr("id", "legend")
+            .attr("width", legendWidth + 50)
+            .attr("height", 50)
+            .style("margin-top", "20px");
+
+        // Create a gradient for the legend
+        const gradient = legendSvg.append("defs")
+            .append("linearGradient")
+            .attr("id", "legend-gradient")
+            .attr("x1", "0%")
+            .attr("y1", "0%")
+            .attr("x2", "100%")
+            .attr("y2", "0%");
+
+        gradient.append("stop")
+            .attr("offset", "0%")
+            .attr("stop-color", "#000000"); // Light blue
+
+        gradient.append("stop")
+            .attr("offset", "100%")
+            .attr("stop-color", "#5bff00"); // Dark blue
+
+        // Draw the legend rectangle
+        legendSvg.append("rect")
+            .attr("x", 10)
+            .attr("y", 10)
+            .attr("width", legendWidth)
+            .attr("height", legendHeight)
+            .style("fill", "url(#legend-gradient)");
+
+        // Add labels to the legend
+        legendSvg.append("text")
+            .attr("x", 10)
+            .attr("y", 45)
+            .style("font-size", "12px")
+            .style("fill", "#000")
+            .text("0%");
+
+        legendSvg.append("text")
+            .attr("x", legendWidth - 10)
+            .attr("y", 45)
+            .style("font-size", "12px")
+            .style("fill", "#000")
+            .style("text-anchor", "end")
+            .text("100%");
+
+        legendSvg.append("text")
+            .attr("x", legendWidth / 2)
+            .attr("y", 45)
+            .style("font-size", "12px")
+            .style("fill", "#000")
+            .style("text-anchor", "middle")
+            .text("Percentage of Green Space");
+    }).catch(error => {
+        console.error("Error loading the green space CSV file:", error);
+    });
 
 
 
@@ -117,17 +228,14 @@ d3.csv("dataset/crimeDataAggregated2021-2025.csv").then(data => {
     { abbr: "Stn", name: "Sutton", x: 3, y: 6 }
 ];
 
-    const crimeTypes = ["Violent Crime", "Burglary", "Theft"];
-    const months = Array.from({ length: 120 }, (_, i) => d3.timeMonth.offset(new Date(2014, 0), i));
-
-    const gridSize = 80; // Borough square size
+const gridSize = 94; // Borough square size
     const width = 8 * gridSize;
     const height = 7 * gridSize;
     // Create SVG container
     const svg = d3.select("#cartogram")
         .attr("width", width)
         .attr("height", height + 80);
-    
+    const tooltip = d3.select("#tooltip");
     svg.selectAll(".borough")
     .data(boroughs)
     .enter().append("rect")
@@ -137,11 +245,28 @@ d3.csv("dataset/crimeDataAggregated2021-2025.csv").then(data => {
     .attr("width", gridSize - 3)
     .attr("height", gridSize - 3)
     .attr("fill", d => d3.interpolateBlues(0.5))
+    .on("mouseover", (event, d) => {
+        // Show the tooltip and set its content
+        const population = averagePopulationMap[d.name] || "N/A";
+        tooltip.style("display", "block")
+            .html(`<strong>${d.name}</strong><br>Average Population over 10 years: ${population.toLocaleString()}`);
+    })
+    .on("mousemove", (event) => {
+        // Update the tooltip position
+        tooltip.style("left", `${event.pageX + 10}px`)
+            .style("top", `${event.pageY + 10}px`);
+    })
+    .on("mouseout", () => {
+        // Hide the tooltip
+        tooltip.style("display", "none");
+    })
     .on("click", (event, d) => {
     console.log(`You clicked on: ${d.name}`);
     const mergedData = mergeCrimeData(d.name, nestedCrimeData20122020, nestedCrimeData20212025);
-    showLineGraph(d, mergedData);
-});
+    const greenPercentage = greenPercentageMap[d.name] || "N/A";
+    console.log(greenPercentage);
+    showLineGraph(d, mergedData, greenPercentage);
+    });
 
     // Add labels to boroughs
     svg.selectAll(".label")
