@@ -1,0 +1,385 @@
+Borough,CrimeType,2014,2016,2019,2018,2015,2017,2020,2012,2013
+Hounslow,Theft,5278,5479,5560,5461,5455,5898,4163,6101,5489
+Greenwich,Burglary,2149,1785,2518,2392,1864,2211,1660,2323,2385
+Croydon,Burglary,3146,2741,2819,2799,2719,2685,2331,4049,3973
+Hackney,Miscellaneous Crimes Against Society,306,307,300,306,316,294,335,227,219
+Islington,Arson and Criminal Damage,1916,1843,1507,1623,1927,1760,1443,1833,1574
+Kingston upon Thames,Miscellaneous Crimes Against Society,100,124,166,130,119,151,130,106,78
+Hackney,Arson and Criminal Damage,1854,1930,1761,1826,1972,1958,1754,1817,1636
+Lewisham,Burglary,2335,2077,2646,2538,2146,2328,2424,3301,3307
+Haringey,Burglary,2891,2473,2829,3181,2568,2365,2049,3445,2745
+Bromley,Theft,5004,5109,5279,5266,5013,5024,3987,5047,4938
+Hounslow,Burglary,1927,1806,2220,2249,1781,2279,1765,2934,2478
+Bromley,Burglary,2692,2213,2742,2597,2524,2589,1737,3447,3127
+Bexley,Arson and Criminal Damage,1404,1600,1613,1506,1500,1687,1426,1560,1408
+Newham,Arson and Criminal Damage,2154,2413,2161,2320,2312,2310,1967,2306,2038
+Westminster,Burglary,3439,3219,4633,4336,3154,3512,3037,4081,3911
+Ealing,Vehicle Offences,3641,3414,5432,4236,3417,3760,4590,4264,3884
+Barnet,Theft,5670,6122,6612,6187,5635,6437,5064,6421,5873
+Bexley,Vehicle Offences,1795,1744,3375,2373,1737,2042,2376,1777,1729
+Merton,Vehicle Offences,1664,1825,2057,1931,1463,1778,2043,1995,1652
+Kensington and Chelsea,Miscellaneous Crimes Against Society,186,252,145,215,203,275,174,192,210
+Bexley,Burglary,1542,1123,1754,1639,1085,1331,1029,1699,1792
+Hillingdon,Drug Offences,889,1013,1334,911,1058,766,1722,1039,984
+Hillingdon,Miscellaneous Crimes Against Society,241,334,327,288,286,304,456,189,227
+Sutton,Theft,2461,2218,2627,2368,2276,2355,2044,2660,2498
+Islington,Vehicle Offences,2394,2391,3074,2769,2441,2992,2576,2337,2238
+Barking and Dagenham,Drug Offences,814,936,1065,880,946,739,1579,957,1102
+Bexley,Theft,2502,2658,2867,2800,2441,2984,2240,2641,2544
+Southwark,Theft,8366,9451,12569,10320,8935,10018,8333,10428,10551
+Lambeth,Theft,9298,9641,10153,9262,9574,9742,6612,11568,10783
+Barnet,Vehicle Offences,3435,3650,6506,5253,3589,3862,5098,4033,4075
+Tower Hamlets,Theft,6917,8039,9180,8387,7130,8334,6958,8439,7808
+Waltham Forest,Drug Offences,1363,1063,1787,1172,1450,895,1819,1295,1702
+Ealing,Arson and Criminal Damage,2260,2491,2186,2124,2408,2280,2035,2556,2213
+Westminster,Vehicle Offences,3354,3995,4645,4203,3160,4350,3750,3167,3496
+Brent,Vehicle Offences,2427,3134,4563,3955,3011,4035,4312,2972,2773
+Camden,Miscellaneous Crimes Against Society,252,272,294,246,229,264,257,290,277
+Waltham Forest,Burglary,2472,1874,1961,2193,2230,2433,1839,2948,2706
+Harrow,Drug Offences,939,482,807,591,622,515,1091,706,902
+Lewisham,Arson and Criminal Damage,2133,2287,2148,2170,2401,2283,2090,2389,2147
+Bexley,Drug Offences,765,650,719,608,677,500,859,794,839
+Lewisham,Miscellaneous Crimes Against Society,254,390,384,363,295,365,359,215,263
+Bromley,Vehicle Offences,2473,2495,4209,3481,2605,3277,3639,2841,2790
+Camden,Theft,10897,11265,17116,14576,11850,16289,10162,14988,13040
+Redbridge,Miscellaneous Crimes Against Society,347,267,280,239,303,258,314,197,252
+Islington,Miscellaneous Crimes Against Society,255,295,306,325,313,299,282,259,299
+Hounslow,Arson and Criminal Damage,1881,2147,1880,1928,2092,2033,1654,2215,1958
+Tower Hamlets,Burglary,2346,2805,3188,3262,2565,2896,2694,2686,2754
+Hillingdon,Theft,4773,5030,5534,5397,5100,5226,4241,4591,4451
+Lambeth,Burglary,3024,3086,3179,3114,2568,2822,2571,3613,3892
+Redbridge,Vehicle Offences,2872,3096,4770,4327,2741,4384,4166,4021,3636
+Lambeth,Vehicle Offences,3315,3505,3554,4008,3398,3111,2990,3509,3180
+Hackney,Burglary,2677,2722,3322,3227,2518,2941,2578,2406,2809
+Richmond upon Thames,Burglary,1759,1360,1527,1788,1450,1908,1292,2013,1933
+Lambeth,Miscellaneous Crimes Against Society,411,481,419,430,398,453,421,267,326
+Richmond upon Thames,Arson and Criminal Damage,1062,1117,990,1070,1045,1121,918,1182,1133
+Southwark,Vehicle Offences,3002,3517,3894,3812,2918,2861,3408,2794,3120
+Lambeth,Arson and Criminal Damage,2477,2696,2038,2336,2623,2567,2006,2473,2387
+Hounslow,Vehicle Offences,2445,3237,4229,3937,2799,3575,3743,3304,2425
+Greenwich,Arson and Criminal Damage,1906,2383,2182,2074,2196,2507,1957,2196,1966
+Greenwich,Vehicle Offences,2295,2693,4581,3465,2262,3117,3193,2371,2405
+Harrow,Vehicle Offences,1488,1573,2822,2019,1615,1926,2991,1957,1656
+Havering,Vehicle Offences,2081,2033,2911,2891,2086,2577,2465,2691,2612
+Ealing,Burglary,2912,2493,2905,2535,2630,2614,2194,3948,3590
+Haringey,Vehicle Offences,3142,3393,5381,4746,2856,4114,4979,3803,3550
+Barnet,Burglary,3631,3405,3629,3679,3854,3550,2799,4844,4276
+Kensington and Chelsea,Arson and Criminal Damage,946,1025,1030,1055,1026,1086,849,1029,813
+Barking and Dagenham,Burglary,1902,1288,1536,1667,1630,1574,1211,2448,2234
+Bromley,Drug Offences,993,735,1139,708,870,621,1277,1012,1051
+Barnet,Drug Offences,1047,927,848,703,809,768,1163,946,1050
+Brent,Miscellaneous Crimes Against Society,276,316,348,368,280,355,406,283,275
+Bexley,Miscellaneous Crimes Against Society,167,218,242,209,296,228,247,167,165
+Newham,Vehicle Offences,3712,4228,4408,5135,3752,4799,3916,4283,4283
+Haringey,Arson and Criminal Damage,2097,2174,1810,2002,2080,2097,1769,2154,1834
+Waltham Forest,Theft,4874,4853,5083,5052,4707,4816,4666,5826,5445
+Hammersmith and Fulham,Arson and Criminal Damage,1332,1372,1319,1206,1431,1328,1125,1449,1177
+Richmond upon Thames,Drug Offences,457,324,358,277,399,380,629,529,627
+Kingston upon Thames,Burglary,994,880,996,975,928,1144,857,1375,1191
+Havering,Theft,3670,3910,3961,3768,3779,4043,3137,3819,3683
+Havering,Burglary,2124,1828,1886,1949,1941,2256,1290,2819,2483
+Wandsworth,Miscellaneous Crimes Against Society,271,294,287,321,333,296,349,227,253
+Islington,Drug Offences,1313,1792,1321,1269,1390,1422,1531,1710,1413
+Harrow,Burglary,1834,1995,2056,1939,1671,2051,1350,2518,2100
+Haringey,Miscellaneous Crimes Against Society,233,342,365,367,281,316,380,161,184
+Richmond upon Thames,Theft,2872,2938,2986,2957,2829,3163,2502,3227,3089
+Hammersmith and Fulham,Miscellaneous Crimes Against Society,299,350,289,256,287,320,247,271,261
+Richmond upon Thames,Vehicle Offences,1576,1836,2323,2220,1447,2324,2287,1769,1405
+Newham,Drug Offences,1723,1718,3030,2103,1680,2154,2967,1863,1623
+Wandsworth,Vehicle Offences,3494,4184,4135,3989,3089,3910,3606,4319,3674
+Southwark,Drug Offences,2733,1866,2641,1928,2273,2140,2334,2448,2678
+Hammersmith and Fulham,Theft,6336,5953,6632,6331,6162,6073,4890,7743,6662
+Croydon,Vehicle Offences,3115,3273,5015,4143,3245,3528,5006,4107,3596
+Hammersmith and Fulham,Vehicle Offences,2550,2945,3306,2819,2776,3399,2267,2964,2317
+Sutton,Arson and Criminal Damage,1229,1290,1135,1159,1285,1210,944,1342,1209
+Westminster,Drug Offences,2808,2084,3340,1916,2107,2316,3217,4683,4173
+Croydon,Arson and Criminal Damage,2757,3116,2428,2531,2994,3033,2430,3045,2777
+Wandsworth,Drug Offences,888,885,942,701,719,840,1524,1049,1074
+Brent,Theft,5336,5931,5588,5879,5490,6208,4573,5386,5020
+Croydon,Drug Offences,1870,1392,2443,1672,1572,1670,2766,2371,2100
+Newham,Miscellaneous Crimes Against Society,370,512,589,597,460,532,494,292,284
+Enfield,Vehicle Offences,3082,3250,6026,5588,3176,3992,5811,3957,4319
+Lewisham,Theft,4892,5060,5476,4878,4880,4864,4633,5820,4829
+Sutton,Burglary,1402,1235,1365,1181,1280,1130,1026,1538,1430
+Hackney,Drug Offences,1299,1385,1710,1467,1318,1258,1694,2216,1896
+Hillingdon,Vehicle Offences,2932,2912,4533,4646,2740,4233,4063,3057,2491
+Wandsworth,Burglary,2678,2350,2718,2753,2392,2383,2290,3424,3098
+Bromley,Miscellaneous Crimes Against Society,245,315,298,282,258,329,361,233,197
+Southwark,Miscellaneous Crimes Against Society,298,342,397,380,310,348,361,329,308
+Kingston upon Thames,Vehicle Offences,741,839,1452,1370,698,1358,1118,875,751
+Redbridge,Arson and Criminal Damage,1574,1586,1489,1548,1556,1764,1416,1692,1459
+Westminster,Miscellaneous Crimes Against Society,429,454,375,389,432,462,349,376,472
+Enfield,Miscellaneous Crimes Against Society,315,316,394,429,316,337,446,199,250
+Merton,Arson and Criminal Damage,1227,1385,1099,1131,1393,1245,1005,1314,1185
+Brent,Arson and Criminal Damage,2075,2223,2096,2098,2057,2179,2053,2126,1976
+Enfield,Arson and Criminal Damage,2006,2052,2069,2106,2041,2112,1813,2115,1953
+Merton,Theft,2949,3082,3098,3134,3112,3235,2283,3386,3263
+Hillingdon,Burglary,2671,2221,2770,2044,2203,2349,1897,3369,2856
+Enfield,Drug Offences,1422,1092,1079,939,1232,1025,1539,1143,1571
+Kensington and Chelsea,Drug Offences,780,1684,1340,1470,1027,1585,1127,1335,1093
+Hillingdon,Arson and Criminal Damage,2276,2332,2195,2034,2180,2514,1871,2199,2070
+Barking and Dagenham,Arson and Criminal Damage,1608,1876,1477,1426,1742,1709,1309,1682,1598
+Lambeth,Drug Offences,2638,2817,2265,2163,2659,2304,2525,2296,1904
+Sutton,Vehicle Offences,1403,1308,2154,1753,1188,1752,2277,1709,1667
+Tower Hamlets,Vehicle Offences,2683,2908,4051,3508,3021,3340,3458,2509,2669
+Lewisham,Drug Offences,1320,1645,1466,1299,1595,1268,1564,1440,1720
+Camden,Burglary,2931,2653,3373,3454,2836,3083,2280,2942,3094
+Greenwich,Drug Offences,1235,888,1301,878,947,977,1964,1325,1314
+Newham,Theft,7785,7740,9192,9221,7671,8532,7781,9243,8058
+Kensington and Chelsea,Burglary,1573,1447,2152,2052,1590,1795,1613,1784,1752
+Haringey,Theft,5837,7182,7057,6808,6523,7704,5568,6177,5813
+Kingston upon Thames,Theft,3182,2972,3396,3600,2876,3010,2312,3580,3400
+Havering,Miscellaneous Crimes Against Society,188,255,269,225,212,248,284,171,166
+Lewisham,Vehicle Offences,2245,2609,4167,3403,2678,2781,3910,3137,2471
+Redbridge,Burglary,2632,1995,2166,2848,2245,3017,1729,3400,2994
+Harrow,Miscellaneous Crimes Against Society,141,215,186,188,164,175,230,157,140
+Newham,Burglary,2488,2117,2231,2441,2275,2176,1875,3088,2921
+Greenwich,Miscellaneous Crimes Against Society,325,446,405,439,395,464,425,261,299
+Hammersmith and Fulham,Drug Offences,1806,1341,1128,950,1417,1065,1221,1652,1957
+Ealing,Miscellaneous Crimes Against Society,291,430,368,322,323,418,468,281,304
+Camden,Vehicle Offences,2801,2826,3707,3176,2626,3415,3012,2745,2749
+Barking and Dagenham,Miscellaneous Crimes Against Society,251,249,282,262,259,249,328,134,201
+Westminster,Arson and Criminal Damage,1991,2146,2349,2266,2032,2226,2018,2247,2062
+Tower Hamlets,Arson and Criminal Damage,2183,2277,2027,2066,2370,2333,1976,2224,2034
+Islington,Burglary,2356,2052,2653,2736,2344,2369,2107,2414,2408
+Ealing,Drug Offences,1606,1379,1662,1154,1413,1358,2245,2173,1902
+Barking and Dagenham,Vehicle Offences,2002,2237,2714,2572,1867,2754,2301,2508,2756
+Kensington and Chelsea,Theft,7907,6883,9080,7050,7704,7004,5300,9768,8641
+Hammersmith and Fulham,Burglary,1448,1533,1860,1930,1570,1914,1460,1868,1519
+Waltham Forest,Arson and Criminal Damage,1651,1896,1677,1619,1920,1905,1573,1928,1755
+Wandsworth,Theft,6195,6619,6380,6180,6424,6458,5234,8030,7383
+Kensington and Chelsea,Vehicle Offences,2295,2964,3756,2861,2466,3104,2523,2225,2047
+Bromley,Arson and Criminal Damage,2195,2117,2000,2104,2215,2181,1715,2220,1960
+Hounslow,Drug Offences,1515,1131,1695,1261,1097,1205,1711,1605,1501
+Hackney,Theft,8132,9323,10528,8899,8503,10102,8466,10457,9561
+Merton,Burglary,1680,1418,1587,1549,1427,1442,984,2031,1789
+Redbridge,Drug Offences,1544,1031,1283,681,1275,741,1769,1947,1820
+Redbridge,Theft,4187,4384,4813,4589,4099,4731,4405,4912,4455
+Southwark,Arson and Criminal Damage,2413,2554,2114,2306,2518,2472,1948,2335,2343
+Westminster,Theft,24800,23522,45142,31474,24850,27112,20141,34989,30391
+Haringey,Drug Offences,1171,1564,1609,1338,1339,1356,1985,1543,1207
+Merton,Miscellaneous Crimes Against Society,138,188,204,191,152,196,233,156,132
+Richmond upon Thames,Miscellaneous Crimes Against Society,137,166,121,119,138,157,170,118,121
+Brent,Drug Offences,2906,2127,1788,1773,1810,1700,2267,3434,3351
+Harrow,Arson and Criminal Damage,1153,1160,1088,1043,1128,1093,964,1216,1119
+Enfield,Theft,4935,4821,5253,5178,4657,5258,4253,4476,4482
+Brent,Burglary,2641,2632,2662,3226,2701,2875,2127,3947,3093
+Wandsworth,Arson and Criminal Damage,1729,1782,1625,1703,1883,1956,1548,2011,1798
+Barking and Dagenham,Theft,3268,3398,3565,3254,3304,3564,3087,3682,3387
+Tower Hamlets,Drug Offences,2195,1684,2487,2126,1814,1490,2960,3261,3027
+Croydon,Miscellaneous Crimes Against Society,314,451,466,454,414,425,493,290,278
+Islington,Theft,8868,9666,10551,9216,9990,12638,7447,11139,9905
+Barnet,Miscellaneous Crimes Against Society,289,344,361,375,307,269,348,281,314
+Havering,Arson and Criminal Damage,1520,1739,1327,1433,1612,1764,1133,1569,1461
+Harrow,Theft,2503,2978,3490,3023,2814,2639,2356,2602,2423
+Camden,Drug Offences,1928,1516,1918,1339,1681,1338,2118,2334,2190
+Hounslow,Miscellaneous Crimes Against Society,346,521,429,507,375,526,450,288,231
+Hackney,Vehicle Offences,2361,2503,3614,3441,2619,3183,3187,2940,2670
+Camden,Arson and Criminal Damage,1638,1910,1648,1679,1870,1850,1474,1846,1566
+Tower Hamlets,Miscellaneous Crimes Against Society,252,462,372,387,305,402,440,229,248
+Kingston upon Thames,Drug Offences,750,747,858,423,901,585,1125,419,588
+Ealing,Theft,6027,6698,6041,5968,6217,6260,4793,7291,6686
+Greenwich,Theft,4963,5311,5597,5291,4857,5433,4240,5592,4964
+Waltham Forest,Miscellaneous Crimes Against Society,266,346,295,298,267,244,342,209,270
+Kingston upon Thames,Arson and Criminal Damage,959,1037,928,913,999,970,728,1074,936
+Barnet,Arson and Criminal Damage,2047,2117,2079,1895,2182,2049,1900,1970,1834
+Southwark,Burglary,2841,2947,3253,3049,2991,3331,2539,3291,3477
+Havering,Drug Offences,753,727,739,532,707,518,1180,1051,1012
+Enfield,Burglary,3048,2539,3215,2968,2810,2621,2456,3726,3461
+Sutton,Miscellaneous Crimes Against Society,96,165,175,169,132,180,213,104,87
+Croydon,Theft,6684,5981,5919,5768,6277,5660,4603,7669,6695
+Merton,Drug Offences,561,468,703,487,476,603,1019,845,641
+Waltham Forest,Vehicle Offences,2634,2522,4282,3796,2652,3389,3742,4078,3812
+Sutton,Drug Offences,456,476,571,353,500,408,791,557,480
+Merton,Fraud and Forgery,0,0,0,0,0,0,0,509,48
+Ealing,Possession of Weapons,143,185,254,212,156,251,233,124,128
+Greenwich,Public Order Offences,1136,1673,1724,1588,1464,1710,1907,852,880
+Lewisham,Sexual Offences,497,634,649,665,539,640,706,394,410
+Lambeth,Public Order Offences,1825,1975,2129,1922,2173,2057,2352,1179,1237
+Brent,Sexual Offences,444,538,653,633,485,621,593,347,323
+Lambeth,Violence Against the Person,7190,8447,9032,8561,8331,8544,8686,5795,5649
+Haringey,Violence Against the Person,5285,6996,7447,7720,6314,7431,7413,4219,3920
+Kensington and Chelsea,Possession of Weapons,55,197,127,181,152,182,139,75,60
+Barnet,Possession of Weapons,101,152,168,182,110,191,166,84,97
+Enfield,Sexual Offences,413,524,612,592,438,563,652,281,323
+Harrow,Sexual Offences,236,273,330,294,244,320,308,168,202
+Newham,Sexual Offences,544,607,777,817,709,748,715,343,429
+Hounslow,Violence Against the Person,4947,6083,7558,7119,5914,6568,7740,4564,4264
+Harrow,Possession of Weapons,63,64,92,100,82,117,112,61,58
+Wandsworth,Public Order Offences,982,1359,1641,1510,1379,1444,1730,802,738
+Barnet,Sexual Offences,375,491,535,534,407,577,544,272,324
+Newham,Possession of Weapons,187,304,355,380,240,437,337,176,201
+Sutton,Fraud and Forgery,0,0,0,0,0,0,0,283,24
+Merton,Sexual Offences,200,286,334,348,252,358,319,153,196
+Brent,Possession of Weapons,161,257,280,289,193,285,268,150,174
+Haringey,Possession of Weapons,130,244,292,341,202,318,274,139,125
+Ealing,Public Order Offences,1389,1769,1930,1853,1778,1924,2137,1209,1195
+Lambeth,Fraud and Forgery,0,0,0,0,0,0,0,1003,99
+Hounslow,Fraud and Forgery,0,0,0,0,0,0,0,839,56
+Barking and Dagenham,Possession of Weapons,68,155,156,198,92,162,194,82,75
+Croydon,Sexual Offences,579,757,890,844,648,796,856,441,469
+Bromley,Sexual Offences,349,457,570,529,387,499,502,219,268
+Kensington and Chelsea,Fraud and Forgery,0,0,0,0,0,0,0,905,96
+Hounslow,Sexual Offences,439,513,524,583,476,506,499,288,307
+Hackney,Sexual Offences,482,646,695,725,567,731,695,355,353
+Bromley,Violence Against the Person,4492,5359,6486,5934,5282,5894,6392,3492,3485
+Haringey,Public Order Offences,1092,1658,1687,1651,1281,1787,1760,584,607
+Southwark,Public Order Offences,1473,1755,2059,1881,1656,1910,2102,1075,1128
+Waltham Forest,Public Order Offences,1059,1303,1235,1263,1225,1283,1431,714,799
+Kingston upon Thames,Fraud and Forgery,0,0,0,0,0,0,0,340,27
+Camden,Violence Against the Person,4604,6003,6597,6862,5737,6499,6379,4147,3701
+Islington,Possession of Weapons,166,210,251,237,168,266,190,146,129
+Islington,Sexual Offences,373,482,603,555,447,618,466,280,287
+Richmond upon Thames,Sexual Offences,191,265,275,266,217,329,280,150,120
+Hammersmith and Fulham,Sexual Offences,287,402,423,420,339,391,414,233,244
+Hillingdon,Violence Against the Person,5431,6269,7303,6660,5992,6355,7468,4230,4088
+Redbridge,Possession of Weapons,112,130,158,176,125,149,178,78,108
+Kensington and Chelsea,Public Order Offences,776,1235,1235,1193,1105,1131,1138,466,469
+Croydon,Public Order Offences,1295,1804,2022,1712,1651,1941,2230,879,926
+Tower Hamlets,Fraud and Forgery,0,0,0,0,0,0,0,1025,108
+Kingston upon Thames,Public Order Offences,455,640,785,724,594,719,732,381,345
+Brent,Public Order Offences,1394,1601,1850,1821,1494,1700,2062,1321,1168
+Hackney,Fraud and Forgery,0,0,0,0,0,0,0,811,56
+Barnet,Fraud and Forgery,0,0,0,0,0,0,0,1489,144
+Lewisham,Possession of Weapons,169,275,323,313,238,308,291,152,189
+Waltham Forest,Fraud and Forgery,0,0,0,0,0,0,0,1100,104
+Sutton,Possession of Weapons,50,69,99,111,60,79,115,54,51
+Bexley,Public Order Offences,576,812,1140,928,723,946,1277,415,465
+Lambeth,Sexual Offences,656,793,872,924,799,864,861,407,446
+Wandsworth,Violence Against the Person,4494,5537,6646,6570,5630,6011,6866,3438,3345
+Tower Hamlets,Violence Against the Person,6301,7556,8394,8397,7225,7688,8207,5128,5316
+Newham,Violence Against the Person,6853,8141,8999,8865,8015,8590,8983,5816,5431
+Enfield,Public Order Offences,975,1251,1477,1367,1095,1233,1761,532,708
+Lambeth,Possession of Weapons,300,412,408,470,364,512,373,198,243
+Westminster,Fraud and Forgery,0,0,0,0,0,0,0,2342,178
+Richmond upon Thames,Fraud and Forgery,0,0,0,0,0,0,0,413,42
+Southwark,Possession of Weapons,189,299,377,464,230,445,340,236,197
+Barking and Dagenham,Fraud and Forgery,0,0,0,0,0,0,0,738,61
+Westminster,Public Order Offences,1828,2528,3317,3241,2137,3153,3012,1580,1610
+Hammersmith and Fulham,Fraud and Forgery,0,0,0,0,0,0,0,864,64
+Havering,Sexual Offences,480,332,459,410,365,420,434,169,187
+Richmond upon Thames,Violence Against the Person,1975,2489,2965,2894,2304,2735,3017,1664,1551
+Redbridge,Sexual Offences,352,499,464,482,399,453,499,221,249
+Hackney,Public Order Offences,1337,1788,1891,1667,1651,1875,2183,902,974
+Hillingdon,Fraud and Forgery,0,0,0,0,0,0,0,748,50
+Enfield,Possession of Weapons,205,216,277,250,155,263,230,129,149
+Camden,Sexual Offences,393,543,605,620,524,620,530,308,302
+Islington,Fraud and Forgery,0,0,0,0,0,0,0,834,59
+Greenwich,Violence Against the Person,5460,7049,7966,7673,6403,7305,8163,4622,4352
+Barking and Dagenham,Sexual Offences,336,416,517,460,406,443,477,237,266
+Westminster,Sexual Offences,620,799,981,978,695,871,798,425,482
+Brent,Fraud and Forgery,0,0,0,0,0,0,0,1299,111
+Richmond upon Thames,Possession of Weapons,39,40,58,72,26,67,51,31,34
+Ealing,Fraud and Forgery,0,0,0,0,0,0,0,1165,113
+Barking and Dagenham,Public Order Offences,773,922,1122,944,937,1026,1165,522,608
+Harrow,Public Order Offences,559,605,855,859,636,685,1003,407,459
+Hounslow,Possession of Weapons,120,129,222,232,83,196,204,108,108
+Hackney,Violence Against the Person,5887,7114,7751,7615,6836,7526,7841,4908,4845
+Hounslow,Public Order Offences,1207,1439,1715,1533,1340,1563,1689,941,906
+Harrow,Fraud and Forgery,0,0,0,0,0,0,0,631,89
+Bromley,Possession of Weapons,94,101,148,205,99,220,181,99,94
+Haringey,Sexual Offences,426,565,643,673,513,598,655,323,285
+Kensington and Chelsea,Violence Against the Person,2844,3414,4203,4084,3395,3801,3902,2206,2075
+Redbridge,Violence Against the Person,4763,5415,6266,6133,5008,5613,6593,3510,3635
+Waltham Forest,Sexual Offences,387,475,487,495,447,550,497,245,275
+Bromley,Fraud and Forgery,0,0,0,0,0,0,0,597,61
+Islington,Violence Against the Person,5035,6061,6310,6441,5712,6128,5983,4073,3918
+Kensington and Chelsea,Sexual Offences,239,314,367,378,267,326,372,185,208
+Westminster,Violence Against the Person,6812,8367,10741,9776,7869,9303,8641,5802,5523
+Tower Hamlets,Sexual Offences,489,685,659,684,518,652,656,369,365
+Havering,Violence Against the Person,3332,5039,5389,5303,4214,4960,5088,2815,2748
+Southwark,Sexual Offences,532,688,752,849,642,789,736,409,428
+Havering,Fraud and Forgery,0,0,0,0,0,0,0,474,39
+Hammersmith and Fulham,Violence Against the Person,3698,4629,5299,5099,4360,4729,4944,3247,3033
+Redbridge,Public Order Offences,974,1071,1205,1155,962,1159,1332,690,662
+Newham,Fraud and Forgery,0,0,0,0,0,0,0,1611,150
+Lewisham,Public Order Offences,1213,1600,1856,1590,1519,1553,2149,1000,1057
+Hillingdon,Possession of Weapons,79,110,169,199,99,162,195,68,91
+Wandsworth,Fraud and Forgery,0,0,0,0,0,0,0,905,85
+Bexley,Fraud and Forgery,0,0,0,0,0,0,0,421,91
+Waltham Forest,Possession of Weapons,175,196,250,246,193,247,225,147,142
+Barking and Dagenham,Violence Against the Person,4354,5260,5948,5502,5060,5280,6176,3335,3425
+Sutton,Violence Against the Person,2634,3093,4195,3597,3115,3491,4128,2327,2031
+Barnet,Public Order Offences,1098,1531,1767,1575,1324,1663,1748,627,733
+Kingston upon Thames,Violence Against the Person,1964,2594,3308,3175,2477,2862,3214,1925,1734
+Bexley,Sexual Offences,236,348,374,346,265,357,366,161,174
+Greenwich,Fraud and Forgery,0,0,0,0,0,0,0,733,94
+Haringey,Fraud and Forgery,0,0,0,0,0,0,0,855,88
+Havering,Possession of Weapons,87,113,166,173,90,137,136,96,91
+Southwark,Fraud and Forgery,0,0,0,0,0,0,0,979,106
+Sutton,Sexual Offences,231,286,281,273,211,347,324,182,202
+Kingston upon Thames,Sexual Offences,189,245,259,287,225,309,308,155,134
+Hillingdon,Public Order Offences,1264,1462,1619,1571,1386,1521,1833,801,834
+Greenwich,Sexual Offences,407,528,675,646,498,636,558,323,294
+Hillingdon,Sexual Offences,395,428,479,520,401,527,486,245,281
+Merton,Violence Against the Person,2521,3304,3935,3649,3222,3560,4149,2144,2072
+Croydon,Violence Against the Person,7043,8639,9578,9060,8318,8595,10577,5786,5334
+Sutton,Public Order Offences,529,673,943,793,611,792,931,383,387
+Hammersmith and Fulham,Possession of Weapons,128,151,157,174,120,167,137,114,135
+Ealing,Sexual Offences,438,531,619,623,529,570,622,344,372
+Wandsworth,Sexual Offences,390,623,690,664,534,667,612,292,357
+Redbridge,Fraud and Forgery,0,0,0,0,0,0,0,905,132
+Islington,Public Order Offences,1593,1885,1727,1649,1796,1746,1929,1289,1066
+Brent,Violence Against the Person,6419,7643,8704,8532,7005,8152,8843,5190,4900
+Hackney,Possession of Weapons,169,257,330,320,234,359,335,140,177
+Lewisham,Violence Against the Person,5805,7188,8458,7515,6918,7445,8352,4956,4915
+Merton,Possession of Weapons,59,92,108,111,76,124,116,78,68
+Croydon,Possession of Weapons,217,268,350,382,218,408,369,215,180
+Bexley,Possession of Weapons,51,85,128,103,65,119,124,59,55
+Merton,Public Order Offences,538,732,906,891,703,822,1007,394,407
+Bexley,Violence Against the Person,2860,3774,5267,4265,3303,4092,5296,2377,2343
+Southwark,Violence Against the Person,6425,7685,8838,8574,7241,7667,8256,5478,5235
+Richmond upon Thames,Public Order Offences,469,727,832,704,658,766,851,439,396
+Havering,Public Order Offences,740,1001,1093,1078,927,1046,1159,570,616
+Camden,Public Order Offences,1315,1735,2017,1786,1552,1919,1947,1180,971
+Kingston upon Thames,Possession of Weapons,44,55,92,88,55,82,79,33,35
+Tower Hamlets,Possession of Weapons,149,247,301,357,191,312,269,147,139
+Wandsworth,Possession of Weapons,95,133,176,207,139,186,185,79,111
+Barnet,Violence Against the Person,4776,6049,7235,6521,5653,6251,7414,3377,3623
+Camden,Possession of Weapons,100,199,234,223,122,237,180,122,131
+Tower Hamlets,Public Order Offences,1469,2166,2139,2153,1783,2215,2193,1029,1258
+Westminster,Possession of Weapons,281,359,469,461,264,473,296,173,230
+Greenwich,Possession of Weapons,123,127,250,208,132,239,254,106,105
+Newham,Public Order Offences,1190,1574,1871,1691,1481,1643,1936,922,797
+Hammersmith and Fulham,Public Order Offences,1241,1561,1559,1408,1391,1458,1494,1062,1033
+Waltham Forest,Violence Against the Person,5123,6176,6114,6352,5737,5957,6587,4287,4439
+Croydon,Fraud and Forgery,0,0,0,0,0,0,0,1116,93
+Enfield,Violence Against the Person,5028,6215,7855,6950,5702,6415,8443,3771,3862
+Bromley,Public Order Offences,1128,1403,1604,1484,1431,1395,1643,675,796
+Lewisham,Fraud and Forgery,1,0,0,0,0,0,0,892,73
+Harrow,Violence Against the Person,2959,3737,4519,4241,3575,3959,4476,2584,2636
+Camden,Fraud and Forgery,0,0,0,0,0,0,0,1342,127
+Enfield,Fraud and Forgery,0,0,0,0,0,0,0,923,96
+Ealing,Violence Against the Person,6162,7768,8356,8051,7336,7835,8650,5861,5252
+Redbridge,Robbery,715,598,991,1039,657,886,675,1042,887
+Barking and Dagenham,Robbery,496,535,1040,818,553,862,712,745,528
+Newham,Robbery,1629,1472,1884,1778,1398,2017,1605,2311,2127
+Camden,Robbery,882,902,1881,1733,1030,1997,1175,1104,875
+Hillingdon,Robbery,499,421,792,563,320,515,524,845,545
+Havering,Robbery,288,311,676,670,323,614,405,431,292
+Hammersmith and Fulham,Robbery,368,398,848,762,357,553,541,697,558
+Greenwich,Robbery,399,486,854,642,464,634,747,587,476
+Westminster,Robbery,1936,1824,4380,3128,1501,2346,2121,2321,2206
+Hackney,Robbery,962,1029,2028,1577,1044,1469,1598,1255,1028
+Haringey,Robbery,977,1248,2553,1811,1235,1781,1532,1127,905
+Hounslow,Robbery,399,393,744,661,379,467,594,769,480
+Lambeth,Robbery,1384,1196,1337,1331,1159,1468,1121,2692,2431
+Harrow,Robbery,307,378,626,363,311,310,507,661,503
+Brent,Robbery,879,920,1375,1414,883,1199,971,1638,1150
+Richmond upon Thames,Robbery,131,106,414,350,149,238,229,227,194
+Bexley,Robbery,204,209,376,318,171,286,308,232,269
+Islington,Robbery,840,934,1568,1496,978,1790,1181,1160,945
+Waltham Forest,Robbery,717,604,839,982,647,813,733,1359,985
+Barnet,Robbery,564,464,1292,737,623,643,929,1147,805
+Tower Hamlets,Robbery,1111,1233,1433,1520,1109,1470,991,1367,1259
+Enfield,Robbery,768,807,1687,1219,940,983,1084,1124,936
+Ealing,Robbery,647,671,1289,845,636,849,873,1236,912
+Merton,Robbery,285,283,431,389,261,356,396,566,440
+Kensington and Chelsea,Robbery,456,522,962,714,408,656,583,645,537
+Croydon,Robbery,973,1140,1140,1080,729,1160,931,1941,1700
+Kingston upon Thames,Robbery,107,120,355,241,109,177,220,237,156
+Southwark,Robbery,1279,1318,2423,1780,1220,1793,1509,2526,2267
+Bromley,Robbery,390,369,506,443,363,603,496,596,576
+Lewisham,Robbery,787,869,1239,1037,811,1006,941,1302,1271
+Sutton,Robbery,202,165,282,321,163,265,248,301,247
+Wandsworth,Robbery,601,610,878,849,450,746,765,1202,946

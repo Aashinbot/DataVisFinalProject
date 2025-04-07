@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Coxcomb Charts</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body { font-family: sans-serif; }
+        .charts-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Space between the charts */
+        }
+        .chart {
+            text-align: center;
+        }
+        .label { font-size: 12px; text-anchor: middle; }
+        svg { margin: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Coxcomb Charts</h1>
+    <div class="charts-container">
+        <div class="chart">
+            <h2>Yearly Crimes</h2>
+            <svg id="crime-chart" width="600" height="600"></svg>
+        </div>
+        <div class="chart">
+            <h2>Burglary Crimes</h2>
+            <svg id="burglary-chart" width="600" height="600"></svg>
+        </div>
+    </div>
+
+    <script>
+    const data = [
+        {year: '2014', crime: 1200},
+        {year: '2015', crime: 1350},
+        {year: '2016', crime: 1100},
+        {year: '2017', crime: 1450},
+        {year: '2018', crime: 1600},
+        {year: '2019', crime: 1550},
+        {year: '2020', crime: 900},
+        {year: '2021', crime: 1300},
+        {year: '2022', crime: 1400},
+        {year: '2023', crime: 1250}
+    ];
+
+    const Burglary = [
+        {year: '2014', crime: 300},
+        {year: '2015', crime: 550},
+        {year: '2016', crime: 40},
+        {year: '2017', crime: 60},
+        {year: '2018', crime: 100},
+        {year: '2019', crime: 150},
+        {year: '2020', crime: 90},
+        {year: '2021', crime: 100},
+        {year: '2022', crime: 100},
+        {year: '2023', crime: 125}
+    ];
+
+    const width = 600, height = 600;
+    const radius = Math.min(width, height) / 2 - 50;
+
+    function createCoxcombChart(svgId, dataset) {
+        const svg = d3.select(svgId)
+            .attr('viewBox', [0, 0, width, height])
+            .append('g')
+            .attr('transform', `translate(${width / 2}, ${height / 2})`);
+
+        const angleScale = d3.scaleBand()
+            .domain(dataset.map(d => d.year))
+            .range([0, 2 * Math.PI])
+            .align(0);
+
+        const radiusScale = d3.scaleSqrt()
+            .domain([0, d3.max(dataset, d => d.crime)])
+            .range([0, radius]);
+
+        const arcGenerator = d3.arc()
+            .innerRadius(0)
+            .outerRadius(d => radiusScale(d.crime))
+            .startAngle(d => angleScale(d.year))
+            .endAngle(d => angleScale(d.year) + angleScale.bandwidth())
+            .padAngle(0.02)
+            .padRadius(0);
+
+        svg.selectAll('path')
+            .data(dataset)
+            .join('path')
+            .attr('d', arcGenerator)
+            .attr('fill', (d, i) => d3.interpolateBlues(i / dataset.length))
+            .attr('stroke', 'white');
+
+        svg.selectAll('.label')
+            .data(dataset)
+            .join('text')
+            .attr('transform', d => {
+                const angle = angleScale(d.year) + angleScale.bandwidth() / 2;
+                const r = radiusScale(d.crime) + 20;
+                return `translate(${Math.sin(angle) * r}, ${-Math.cos(angle) * r})`;
+            })
+            .attr('class', 'label')
+            .text(d => `${d.year}\n(${d.crime})`)
+            .call(text => text.each(function (d) {
+                const lines = d3.select(this).text().split("\n");
+                d3.select(this).text(null)
+                    .selectAll("tspan")
+                    .data(lines)
+                    .enter()
+                    .append("tspan")
+                    .attr("x", 0)
+                    .attr("dy", (d, i) => `${i * 1.1}em`)
+                    .text(d => d);
+            }));
+    }
+
+    // Create Coxcomb charts
+    createCoxcombChart('#crime-chart', data);
+    createCoxcombChart('#burglary-chart', Burglary);
+    </script>
+</body>
+</html>

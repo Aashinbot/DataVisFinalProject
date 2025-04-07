@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Complex Crime Sankey Diagram</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3-sankey@0.12.3/dist/d3-sankey.min.js"></script>
+  <style>
+    body { font-family: sans-serif; }
+    svg { width: 100%; height: 600px; }
+    .node rect { fill-opacity: .9; shape-rendering: crispEdges; }
+    .node text { pointer-events: none; font-size: 12px; }
+    h2 { text-align: center; }
+  </style>
+</head>
+<body>
+  <h2>Crime Flow by Borough → Crime Type → Response Outcome</h2>
+  <svg></svg>
+
+  <script>
+    const data = {
+      nodes: [
+        // Boroughs
+        { name: "Camden" }, { name: "Hackney" }, { name: "Westminster" },
+        // Crime Types
+        { name: "Theft" }, { name: "Assault" }, { name: "Burglary" },
+        // Outcomes
+        { name: "Solved" }, { name: "Unsolved" }, { name: "No Response" }
+      ],
+      links: [
+        // Camden crimes
+        { source: 0, target: 3, value: 40 },
+        { source: 0, target: 4, value: 20 },
+        { source: 0, target: 5, value: 10 },
+
+        // Hackney crimes
+        { source: 1, target: 3, value: 30 },
+        { source: 1, target: 4, value: 25 },
+        { source: 1, target: 5, value: 15 },
+
+        // Westminster crimes
+        { source: 2, target: 3, value: 60 },
+        { source: 2, target: 4, value: 40 },
+        { source: 2, target: 5, value: 30 },
+
+        // Theft outcomes
+        { source: 3, target: 6, value: 70 },
+        { source: 3, target: 7, value: 40 },
+
+        // Assault outcomes
+        { source: 4, target: 6, value: 30 },
+        { source: 4, target: 8, value: 55 },
+
+        // Burglary outcomes
+        { source: 5, target: 7, value: 20 },
+        { source: 5, target: 8, value: 35 }
+      ]
+    };
+
+    const svg = d3.select("svg"),
+          { width, height } = svg.node().getBoundingClientRect();
+
+    const sankey = d3.sankey()
+      .nodeWidth(20)
+      .nodePadding(15)
+      .extent([[1, 1], [width - 1, height - 6]]);
+
+    const graph = sankey(data);
+
+    // Draw links
+    svg.append("g")
+      .attr("fill", "none")
+      .selectAll("path")
+      .data(graph.links)
+      .join("path")
+        .attr("d", d3.sankeyLinkHorizontal())
+        .attr("stroke", "#777")
+        .attr("stroke-width", d => Math.max(1, d.width))
+        .attr("opacity", 0.5);
+
+    // Draw nodes
+    const node = svg.append("g")
+      .selectAll("g")
+      .data(graph.nodes)
+      .join("g")
+        .attr("class", "node");
+
+    node.append("rect")
+        .attr("x", d => d.x0)
+        .attr("y", d => d.y0)
+        .attr("height", d => d.y1 - d.y0)
+        .attr("width", d => d.x1 - d.x0)
+        .attr("fill", "#4e79a7")
+        .attr("stroke", "#000");
+
+    // Add labels
+    node.append("text")
+        .attr("x", d => d.x0 - 8)
+        .attr("y", d => (d.y1 + d.y0) / 2)
+        .attr("dy", "0.35em")
+        .attr("text-anchor", "end")
+        .text(d => d.name);
+  </script>
+</body>
+</html>
