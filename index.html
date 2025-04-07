@@ -11,7 +11,6 @@
             text-align: center;
         }
         .borough {
-            /* fill: yellow; Default uniform color */
             stroke: #ffffff;
             stroke-width: 2;
             cursor: pointer;
@@ -53,15 +52,11 @@
 <Script src="convertboroughToJson.js"></Script>
 <Script src="mergeCrimeData.js"></Script>
 <script>
-// Load the CSV file
 let nestedCrimeData20122020 = null;
 let nestedCrimeData20212025 = null;
 const averagePopulationMap = {};
-// Load the population CSV file
 d3.csv("dataset/population/population GLA estimate 2012-2025.csv").then(populationData => {
-    // Create a mapping of borough names to their average population
     
-
     populationData.forEach(row => {
         const borough = row["Area Name"];
         const years = Object.keys(row).filter(key => key !== "Area Name"); // Get all year columns
@@ -72,10 +67,9 @@ d3.csv("dataset/population/population GLA estimate 2012-2025.csv").then(populati
 
     console.log("Average Population Map:", averagePopulationMap);
 
-    // Example: Use the average population to scale borough sizes
     const sizeScale = d3.scaleLinear()
         .domain([d3.min(Object.values(averagePopulationMap)), d3.max(Object.values(averagePopulationMap))])
-        .range([40, 100]); // Minimum and maximum rectangle sizes
+        .range([40, 100]); 
 
     svg.selectAll(".borough")
         .attr("width", d => sizeScale(averagePopulationMap[d.name]) - 3)
@@ -88,7 +82,6 @@ d3.csv("dataset/population/population GLA estimate 2012-2025.csv").then(populati
 d3.csv("dataset/crime/crimeDataAggregated2012-2020.csv").then(data => {
     console.log("Loaded data:", data);
 
-    // Call the function to transform the data
     nestedCrimeData20122020 = transformToNestedJSON(data);
 
     console.log("Nested JSON Data:", nestedCrimeData20122020);
@@ -99,7 +92,6 @@ d3.csv("dataset/crime/crimeDataAggregated2012-2020.csv").then(data => {
 d3.csv("dataset/crime/crimeDataAggregated2021-2025.csv").then(data => {
     console.log("Loaded data:", data);
 
-    // Call the function to transform the data
     nestedCrimeData20212025 = transformToNestedJSON(data);
 
     console.log("Nested JSON Data2:", nestedCrimeData20212025);
@@ -109,89 +101,83 @@ d3.csv("dataset/crime/crimeDataAggregated2021-2025.csv").then(data => {
 
 const greenPercentageMap = {};
 d3.csv("dataset/Greenage/percent of borough green.csv").then(greenData => {
-        // Create a mapping of borough names to green percentages
+        
         
         greenData.forEach(row => {
             greenPercentageMap[row["City of London"]] = parseFloat(row["5.59"]);
         });
 
-        // Create a color scale for the percentages
         const colorScale = d3.scaleLinear()
-            .domain([0, 100]) // Percentages range from 0 to 100
-            .range(["#000000", "#5bff00"]); // Light blue to dark blue
+            .domain([0, 100]) 
+            .range(["#000000", "yellow"]); 
 
-        // Update the borough colors based on the green percentage
         svg.selectAll(".borough")
             .attr("fill", d => {
                 const percentage = greenPercentageMap[d.name];
-                return percentage ? colorScale(percentage) : "#000000"; // Default to light blue if no data
+                return percentage ? colorScale(percentage) : "#000000";
             });
 
-        // Add a legend for the color scale
-        const legendWidth = 300;
-        const legendHeight = 20;
+            const legendWidth = 300;
+const legendHeight = 20;
 
-        const legendSvg = d3.select("body").append("svg")
-            .attr("id", "legend")
-            .attr("width", legendWidth + 50)
-            .attr("height", 50)
-            .style("margin-top", "20px");
+const legendSvg = d3.select("#cartogram")
+    .append("svg") 
+    .attr("id", "legend")
+    .attr("width", legendWidth + 50)
+    .attr("height", 50)
+    .style("margin-top", "10px");
 
-        // Create a gradient for the legend
-        const gradient = legendSvg.append("defs")
-            .append("linearGradient")
-            .attr("id", "legend-gradient")
-            .attr("x1", "0%")
-            .attr("y1", "0%")
-            .attr("x2", "100%")
-            .attr("y2", "0%");
+const gradient = legendSvg.append("defs")
+    .append("linearGradient")
+    .attr("id", "legend-gradient")
+    .attr("x1", "0%")
+    .attr("y1", "0%")
+    .attr("x2", "100%")
+    .attr("y2", "0%");
 
-        gradient.append("stop")
-            .attr("offset", "0%")
-            .attr("stop-color", "#000000"); // Light blue
+gradient.append("stop")
+    .attr("offset", "0%")
+    .attr("stop-color", "#000000");
 
-        gradient.append("stop")
-            .attr("offset", "100%")
-            .attr("stop-color", "#5bff00"); // Dark blue
+gradient.append("stop")
+    .attr("offset", "100%")
+    .attr("stop-color", "yellow");
 
-        // Draw the legend rectangle
-        legendSvg.append("rect")
-            .attr("x", 10)
-            .attr("y", 10)
-            .attr("width", legendWidth)
-            .attr("height", legendHeight)
-            .style("fill", "url(#legend-gradient)");
+legendSvg.append("rect")
+    .attr("x", 10)
+    .attr("y", 10)
+    .attr("width", legendWidth)
+    .attr("height", legendHeight)
+    .style("fill", "url(#legend-gradient)");
 
-        // Add labels to the legend
-        legendSvg.append("text")
-            .attr("x", 10)
-            .attr("y", 45)
-            .style("font-size", "12px")
-            .style("fill", "#000")
-            .text("0%");
+legendSvg.append("text")
+    .attr("x", 10)
+    .attr("y", 45)
+    .style("font-size", "12px")
+    .style("fill", "#000")
+    .text("0%");
 
-        legendSvg.append("text")
-            .attr("x", legendWidth - 10)
-            .attr("y", 45)
-            .style("font-size", "12px")
-            .style("fill", "#000")
-            .style("text-anchor", "end")
-            .text("100%");
+legendSvg.append("text")
+    .attr("x", legendWidth - 10)
+    .attr("y", 45)
+    .style("font-size", "12px")
+    .style("fill", "#000")
+    .style("text-anchor", "end")
+    .text("100%");
 
-        legendSvg.append("text")
-            .attr("x", legendWidth / 2)
-            .attr("y", 45)
-            .style("font-size", "12px")
-            .style("fill", "#000")
-            .style("text-anchor", "middle")
-            .text("Percentage of Green Space");
+legendSvg.append("text")
+    .attr("x", legendWidth / 2)
+    .attr("y", 45)
+    .style("font-size", "12px")
+    .style("fill", "#000")
+    .style("text-anchor", "middle")
+    .text("Percentage of Green Space");         
     }).catch(error => {
         console.error("Error loading the green space CSV file:", error);
     });
 
 
 
-    // Boroughs with correct approximate positions for alignment
     const boroughs = [
     { abbr: "Enf", name: "Enfield", x: 4, y: 0 },
     { abbr: "Brn", name: "Barnet", x: 3, y: 1 },
@@ -228,10 +214,10 @@ d3.csv("dataset/Greenage/percent of borough green.csv").then(greenData => {
     { abbr: "Stn", name: "Sutton", x: 3, y: 6 }
 ];
 
-const gridSize = 94; // Borough square size
+const gridSize = 94; 
     const width = 8 * gridSize;
     const height = 7 * gridSize;
-    // Create SVG container
+   
     const svg = d3.select("#cartogram")
         .attr("width", width)
         .attr("height", height + 80);
@@ -246,24 +232,24 @@ const gridSize = 94; // Borough square size
     .attr("height", gridSize - 3)
     .attr("fill", d => d3.interpolateBlues(0.5))
     .on("mouseover", (event, d) => {
-        // Show the tooltip and set its content
+       
         const population = averagePopulationMap[d.name] || "N/A";
         tooltip.style("display", "block")
             .html(`<strong>${d.name}</strong><br>Average Population over 10 years: ${population.toLocaleString()}`);
     })
     .on("mousemove", (event) => {
-        // Update the tooltip position
+       
         tooltip.style("left", `${event.pageX + 10}px`)
             .style("top", `${event.pageY + 10}px`);
     })
     .on("mouseout", () => {
-        // Hide the tooltip
+      
         tooltip.style("display", "none");
     })
     .on("click", (event, d) => {
     console.log(`You clicked on: ${d.name}`);
     if (d.name === "City of London") {
-        alert("The City of London is not a borough and does not have crime data.");
+        alert("The City of London does not have crime data.");
         return;
     }
     else{
@@ -274,7 +260,6 @@ const gridSize = 94; // Borough square size
     }
 });
 
-    // Add labels to boroughs
     svg.selectAll(".label")
         .data(boroughs)
         .enter().append("text")
@@ -291,5 +276,12 @@ const gridSize = 94; // Borough square size
         <div id="linegraph-container"></div>
     </div>
 </div>
+<div id="additional-info" style="margin-top: 20px; padding: 20px; background-color: #f9f9f9; border: 1px solid #ddd; text-align: center;">
+    <h3>Encoded Data in Visualisation</h3>
+    <p> Monthly crime data from 2012 to 2022: The data was converted into CSV from Excel format and then the process to clean begun. Firstly, it was loaded it into python to utilise Apache Spark and pandas. To begin, the date was not the right format, so that was fixed first, using the current date and making new columns to break the day into years and months. Then the data was iterated upon to correlate the years, the boroughs and the crime, to sum the values, these where then made into one row. Then the columns which were no longer required, where dropped. Then the data was loaded into JavaScript, ready to be merged with the 2021-2025 data. </p>
+    <p> Monthly crime population from 2021-2025: This data was provided as a baseline for the assignment, it is found in the dataset website. To clean this data, Python libraries spark, and pandas were used. The libraries were used to traverse the data to gather were the borough names where the same, then they were grouped together. Once they had the same names, it was a similar process to gather them into years. Once that was done, the column names and crime names were altered to coincide with the dataset. Then the data was exported into a new csv ready to be used by the visualisation in JavaScript. Once the 2 datasets where ready, they were combined in d3 using its inbuilt function to traverse and make into a map. Once the combination occurred, it was used to encode the line graph, where each line represented a different crime, and you would be able to click the legend to home in on one of the crimes for better comparison. The years were the X axis to signify temporal data and the Y axis were the crime amounts. One thing to highlight is that the crime in the second dataset is a lot larger than the first half.</p>
+    <p> London Green and Blue cover data: Fortunately, for London Green and blue data, there was a summary of the data that highlighted the percentages of the boroughs being green, and was available in csv format, so the data was pulled from the data source. In the visualisation, it is used to encode the hue of the borough cartograph map to signify which areas are greener and hence more relatively more or less urban than the others. Also, the value is retained and shown when the viewer clicks on a particular borough as well as colouring the background of the layer where the crime data is located.
+    <p> Land Area and population density: There isn’t data that accurately portrays population count that occurs over 10 years, however there are estimates based on data that is collected such as the Census and ONS mid-year estimates. The data was fortunately already split into different boroughs and across different years, so the cleaning that took place was done by manually picking out the data from the years that where required and adding them to a separate csv, if the data was larger, than it might have been difficult to do this way, however it was fine for the current application. Originally the data was planned to be used by adding a separate graph highlighting the change population across the years, however, to add more to the cartograph, the data encoding was instead changed to change the size of the London borough maps, this allowed the map to now show which populations where bigger in certain areas, making the actual size of the boroughs properly signify that, as well as making it a little easier to do the visualisation. Now that it was encoded once, the average of the years was calculated by each year/how many years and that was the data used. Also, interaction is kept by hovering over the borough to show the average population.</p>
+  </div>
 </body>
 </html>
