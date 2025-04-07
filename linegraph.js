@@ -70,13 +70,13 @@ chartContainer.append("h3")
         : `Crime Trends in ${borough.name} (2012-2024)`)
     .style("text-align", "center");
 
-    const margin = { top: 40, right: 50, bottom: 100, left: 50 }; // Increased bottom margin for legend
-    const width = 900 - margin.left - margin.right; // Adjusted width for the graph
-    const height = 600 - margin.top - margin.bottom; // Height for the graph
+    const margin = { top: 40, right: 50, bottom: 100, left: 50 }; 
+    const width = 900 - margin.left - margin.right; 
+    const height = 600 - margin.top - margin.bottom;
 
     const svg = chartContainer.append("svg")
         .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom + 50) // Extra space for the legend
+        .attr("height", height + margin.top + margin.bottom + 50) 
         .append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`);
 
@@ -167,7 +167,7 @@ chartContainer.append("h3")
         legendItem.append("div")
             .style("width", "20px") 
             .style("height", "20px") 
-            .style("background-color", crimeTypeColors[crimeType] || "#000") // Use fixed color mapping
+            .style("background-color", crimeTypeColors[crimeType] || "#000")
             .style("margin-right", "5px");
 
         legendItem.append("span")

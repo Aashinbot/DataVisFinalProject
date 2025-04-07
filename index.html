@@ -59,10 +59,10 @@ d3.csv("dataset/population/population GLA estimate 2012-2025.csv").then(populati
     
     populationData.forEach(row => {
         const borough = row["Area Name"];
-        const years = Object.keys(row).filter(key => key !== "Area Name"); // Get all year columns
-        const totalPopulation = years.reduce((sum, year) => sum + parseFloat(row[year]), 0); // Sum all years
-        const averagePopulation = Math.ceil(totalPopulation / years.length); // Compute the average
-        averagePopulationMap[borough] = averagePopulation; // Store the result
+        const years = Object.keys(row).filter(key => key !== "Area Name");
+        const totalPopulation = years.reduce((sum, year) => sum + parseFloat(row[year]), 0);
+        const averagePopulation = Math.ceil(totalPopulation / years.length);
+        averagePopulationMap[borough] = averagePopulation; 
     });
 
     console.log("Average Population Map:", averagePopulationMap);
